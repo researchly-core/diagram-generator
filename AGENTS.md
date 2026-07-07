@@ -56,6 +56,8 @@ Use these levels unless the project asks for something else:
 
 - Prefer semantic HTML with CSS classes over inline styles.
 - Reuse shared CSS from `src/diagram-css/` when available.
+- Reuse snippets from `src/components/` for common structures such as zones, subpanels, service rows, stages, pipelines, and metrics.
+- Keep `data-component` attributes when using a shared snippet so future AI passes can recognize reusable blocks.
 - Keep each diagram responsive enough to inspect on common desktop widths.
 - Use CSS variables for colors, spacing, typography, and shadows.
 - Use SVG only where it is the right primitive for arrows, connectors, or icons.

@@ -1,0 +1,41 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Preview Researchly Example (Chrome)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:8080/examples/researchly-azure-ai-architecture.html",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "serve diagrams",
+      "presentation": {
+        "group": "diagram-preview",
+        "order": 1
+      }
+    },
+    {
+      "name": "Preview Researchly Example (Edge)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:8080/examples/researchly-azure-ai-architecture.html",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "serve diagrams",
+      "presentation": {
+        "group": "diagram-preview",
+        "order": 2
+      }
+    },
+    {
+      "name": "Preview Current HTML File (Chrome)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:8080/${relativeFile}",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "serve diagrams",
+      "presentation": {
+        "group": "diagram-preview",
+        "order": 3
+      }
+    }
+  ]
+}

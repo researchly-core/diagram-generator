@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1500, initial-scale=1">
+    <title>Researchly Style Azure AI Architecture Example</title>
+    <link rel="stylesheet" href="../src/diagram-css/base.css">
+    <link rel="stylesheet" href="../src/diagram-css/themes/researchly.css">
+  </head>
+  <body class="brand-researchly">
+    <main class="architecture-page">
+      <h1 class="diagram-title">Azure-native Research Intelligence Architektur</h1>
+      <p class="diagram-subtitle">Gemeinsame technische Basis für Recherche-Workflows, zitierfähige Analysen und agentische Wissensarbeit</p>
+
+      <section class="diagram-board" aria-label="Azure-native Research Intelligence Architektur">
+        <div class="arrow arrow-1" aria-hidden="true"></div>
+        <div class="arrow arrow-2" aria-hidden="true"></div>
+        <div class="arrow arrow-3" aria-hidden="true"></div>
+        <div class="arrow arrow-4" aria-hidden="true"></div>
+
+        <section class="zone" data-component="diagram-zone">
+          <div class="badge">1</div>
+          <h2 class="zone-title">Datenquellen</h2>
+          <div class="stack">
+            <div class="item" data-component="list-item"><span class="metric-icon">▣</span><span>Webseiten & Marktquellen</span></div>
+            <div class="item" data-component="list-item"><span class="metric-icon">▤</span><span>PDFs, Reports & Decks</span></div>
+            <div class="item" data-component="list-item"><span class="metric-icon">▥</span><span>CRM- und Interviewdaten</span></div>
+            <div class="item" data-component="list-item"><span class="metric-icon">▦</span><span>Tabellen & Datenbanken</span></div>
+            <div class="item" data-component="list-item"><span class="metric-icon">▧</span><span>Deal-, Portfolio- und Pipeline-Listen</span></div>
+            <div class="item" data-component="list-item"><span class="metric-icon">⌘</span><span>APIs, Feeds und interne Tools</span></div>
+          </div>
+          <div class="data-scope">Direktbezug zu quellenbasierter Wissensarbeit</div>
+        </section>
+
+        <section class="zone zone-wide" data-component="diagram-zone">
+          <div class="badge">2</div>
+          <h2 class="zone-title">Shared Azure AI Foundation</h2>
+
+          <section class="subpanel" data-component="subpanel">
+            <h3 class="subpanel-title">A. Speicher & Steuerung</h3>
+            <div class="stack-tight">
+              <div class="service" data-component="service-row">
+                <img src="../resources/icons/azure/storage/10086-icon-service-Storage-Accounts.svg" alt="">
+                <span>Azure Blob Storage / Data Lake</span>
+              </div>
+              <div class="service" data-component="service-row">
+                <span class="metric-icon">▥</span>
+                <span>Queue Storage / Service Bus</span>
+              </div>
+              <div class="service" data-component="service-row">
+                <img src="../resources/icons/azure/security/10245-icon-service-Key-Vaults.svg" alt="">
+                <span>Azure Key Vault</span>
+              </div>
+              <div class="service" data-component="service-row">
+                <img src="../resources/icons/azure/monitor/00001-icon-service-Monitor.svg" alt="">
+                <span>Azure Monitor / App Insights</span>
+              </div>
+            </div>
+          </section>
+
+          <div class="foundation">
+            <section class="subpanel" data-component="subpanel">
+              <h3 class="subpanel-title">B. Dokumentenverarbeitung</h3>
+              <div class="pipeline" data-component="pipeline">
+                <div class="step">
+                  <div class="step-icon">☁</div>
+                  <span>Upload & Intake</span>
+                </div>
+                <div class="step">
+                  <div class="step-icon">OCR</div>
+                  <span>Parsing</span>
+                </div>
+                <div class="step">
+                  <div class="step-icon">▦</div>
+                  <span>Tabellen-Extraktion</span>
+                </div>
+                <div class="step">
+                  <div class="step-icon">≡</div>
+                  <span>Normalisierung</span>
+                </div>
+                <div class="step">
+                  <div class="step-icon">◆</div>
+                  <span>Metadaten</span>
+                </div>
+                <div class="step">
+                  <div class="step-icon">□</div>
+                  <span>Chunking</span>
+                </div>
+              </div>
+              <div class="dotline">
+                <span>Dokument laden</span>
+                <span>OCR</span>
+                <span>Struktur</span>
+                <span>Metadaten</span>
+                <span>Embeddings</span>
+                <span>Indexierung</span>
+              </div>
+            </section>
+
+            <div class="foundation-bottom">
+              <section class="subpanel" data-component="subpanel">
+                <h3 class="subpanel-title">C. Applikationslogik</h3>
+                <div class="stack-tight">
+                  <div class="service" data-component="service-row">
+                    <span class="metric-icon">⚡</span>
+                    <span>Azure Functions</span>
+                  </div>
+                  <div class="service" data-component="service-row">
+                    <img src="../resources/icons/azure/other/02989-icon-service-Container-Apps-Environments.svg" alt="">
+                    <span>Container Apps</span>
+                  </div>
+                  <div class="service" data-component="service-row">
+                    <span class="metric-icon">◎</span>
+                    <span>Retrieval API</span>
+                  </div>
+                  <div class="service" data-component="service-row">
+                    <span class="metric-icon">◉</span>
+                    <span>Workflow Orchestrator</span>
+                  </div>
+                  <div class="service" data-component="service-row">
+                    <span class="metric-icon">●</span>
+                    <span>Chatbot API</span>
+                  </div>
+                </div>
+              </section>
+
+              <section class="subpanel" data-component="subpanel">
+                <h3 class="subpanel-title">D. Model Layer</h3>
+                <div class="stack-tight">
+                  <div class="service" data-component="service-row">
+                    <img src="../resources/icons/azure/ai + machine learning/03513-icon-service-AI-Studio.svg" alt="">
+                    <span>Azure AI Foundry</span>
+                  </div>
+                  <div class="service" data-component="service-row">
+                    <img src="../resources/icons/azure/ai + machine learning/03438-icon-service-Azure-OpenAI.svg" alt="">
+                    <span>LLMs</span>
+                  </div>
+                  <div class="service" data-component="service-row">
+                    <span class="metric-icon">⌁</span>
+                    <span>Embedding-Modelle</span>
+                  </div>
+                  <div class="service" data-component="service-row">
+                    <span class="metric-icon">⬟</span>
+                    <span>Prompting & Guardrails</span>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section class="zone" data-component="diagram-zone">
+          <div class="badge">3</div>
+          <h2 class="zone-title">Azure AI Search</h2>
+          <div class="search-cloud">
+            <img src="../resources/icons/azure/ai + machine learning/10044-icon-service-Cognitive-Search.svg" alt="">
+            <span>Vektorindex & Hybrid Retrieval</span>
+          </div>
+          <div class="stack">
+            <div class="item" data-component="list-item"><span class="metric-icon">□</span><span>Projektbezogene Indizes</span></div>
+            <div class="item" data-component="list-item"><span class="metric-icon">⌬</span><span>Vektorsuche</span></div>
+            <div class="item" data-component="list-item"><span class="metric-icon">Aa</span><span>Keyword / BM25</span></div>
+            <div class="item" data-component="list-item"><span class="metric-icon">▽</span><span>Metadaten-Filter</span></div>
+            <div class="item" data-component="list-item"><span class="metric-icon">▥</span><span>Optionales Reranking</span></div>
+          </div>
+          <div class="data-scope">Ein Datenbereich pro Research-Projekt</div>
+        </section>
+
+        <section class="zone" data-component="diagram-zone">
+          <div class="badge">4</div>
+          <h2 class="zone-title">Anwendungsfälle</h2>
+
+          <section class="stage" data-component="stage">
+            <h3 class="stage-title">Stage 1 - Research Brief Generator</h3>
+            <div class="mini-flow">
+              <div class="mini"><div class="mini-icon">▤</div><span>Quellen je Thema</span></div>
+              <div class="mini"><div class="mini-icon">▽</div><span>Extraktion</span></div>
+              <div class="mini"><div class="mini-icon">♢</div><span>LLM-Auswertung</span></div>
+              <div class="mini"><div class="mini-icon">{}</div><span>Strukturierter Output</span></div>
+              <div class="mini"><div class="mini-icon">✓</div><span>Zitierfähig</span></div>
+            </div>
+            <div class="stage-content">
+              <ul class="bullets">
+                <li>Market Maps, Wettbewerber, Signale</li>
+                <li>Quellen, Confidence und Annahmen</li>
+                <li>Wiederholbare Analyse-Templates</li>
+              </ul>
+              <div class="callout">Human-in-the-Loop<br>Keine automatische Entscheidung ohne Review</div>
+            </div>
+          </section>
+
+          <section class="stage" data-component="stage">
+            <h3 class="stage-title">Stage 2 - RAG Workspace Chatbot</h3>
+            <div class="mini-flow">
+              <div class="mini"><div class="mini-icon">□</div><span>Projektwahl</span></div>
+              <div class="mini"><div class="mini-icon">○</div><span>Hybrid Search</span></div>
+              <div class="mini"><div class="mini-icon">≡</div><span>Reranking</span></div>
+              <div class="mini"><div class="mini-icon">●</div><span>Antwort</span></div>
+              <div class="mini"><div class="mini-icon">”</div><span>Quellen</span></div>
+            </div>
+            <ul class="bullets">
+              <li>Antworten mit Quellen und Dokumentnummer</li>
+              <li>Single-Project-Kontext</li>
+              <li>Auditierbare Wissensarbeit statt Einzelfall-Prompts</li>
+            </ul>
+          </section>
+
+          <section class="stage dashed" data-component="stage">
+            <h3 class="stage-title">Stage 3 - Optional</h3>
+            <div class="service" data-component="service-row">
+              <span class="metric-icon">⌬</span>
+              <span>Agentic Extension / Out of Scope</span>
+            </div>
+            <ul class="bullets">
+              <li>Azure AI Foundry Agents</li>
+              <li>Tool Calls und MCP</li>
+              <li>Projektübergreifende Abfragen</li>
+              <li>Export nach Excel oder CRM</li>
+            </ul>
+          </section>
+        </section>
+      </section>
+
+      <section class="evaluation">
+        <h2 class="evaluation-title">Evaluation & Data Quality Assessment</h2>
+        <div class="metric-grid">
+          <div class="metric logo" data-component="metric">researchly</div>
+          <div class="metric" data-component="metric"><span class="metric-icon">OCR</span><span>OCR-Qualität</span></div>
+          <div class="metric" data-component="metric"><span class="metric-icon">▦</span><span>Tabellen-Erkennung</span></div>
+          <div class="metric" data-component="metric"><span class="metric-icon">◆</span><span>Metadaten-Vollständigkeit</span></div>
+          <div class="metric" data-component="metric"><span class="metric-icon">◎</span><span>Retrieval Recall</span></div>
+          <div class="metric" data-component="metric"><span class="metric-icon">✓</span><span>Answer Correctness</span></div>
+          <div class="metric" data-component="metric"><span class="metric-icon">⬟</span><span>Groundedness</span></div>
+          <div class="metric" data-component="metric"><span class="metric-icon">”</span><span>Citation Accuracy</span></div>
+          <div class="metric" data-component="metric"><span class="metric-icon">▥</span><span>Extraktionsqualität</span></div>
+          <div class="metric" data-component="metric"><span class="metric-icon">●</span><span>Go / No-Go Empfehlung</span></div>
+        </div>
+      </section>
+
+      <p class="source-note">Example style profile inspired by Researchly public site, captured 2026-07-07.</p>
+    </main>
+  </body>
+</html>

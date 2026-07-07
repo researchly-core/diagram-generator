@@ -97,6 +97,51 @@ Future examples:
 
 When adding a resource pack, include a short note in `docs/` or the relevant folder explaining source, license, version/date, and intended use.
 
+## Brand Profiles
+
+Customer or internal visual identity belongs in `docs/brand-profiles/` and `src/diagram-css/themes/`.
+
+Current profiles:
+
+- `docs/brand-profiles/researchly.json` - Researchly-inspired style profile
+- `src/diagram-css/themes/researchly.css` - CSS variables and small overrides for the Researchly style
+
+Use `docs/brand-profile-template.md` when adding a new customer CI.
+
+## Examples
+
+Current examples:
+
+- `examples/researchly-azure-ai-architecture.html` - wide Azure AI architecture example inspired by the provided reference diagram and Researchly style
+
+## Components
+
+Reusable HTML snippets live in `src/components/`.
+
+Current components:
+
+- `diagram-zone.html` - numbered top-level diagram section
+- `subpanel.html` - nested panel inside a zone
+- `service-row.html` - icon plus service label row
+- `list-item.html` - boxed source/search/input item
+- `pipeline.html` - horizontal processing pipeline
+- `stage.html` - application/use-case stage
+- `metric.html` - evaluation metric tile
+
+The examples remain plain HTML. Components are copyable snippets styled by `src/diagram-css/base.css` and the active theme. Example markup may include `data-component` attributes so humans, AI agents, and future scripts can recognize reusable blocks.
+
+## Preview In VS Code
+
+Use the Run and Debug panel to preview diagrams:
+
+1. Open `Run and Debug`.
+2. Select `Preview Researchly Example (Chrome)` or `Preview Researchly Example (Edge)`.
+3. Press `F5`.
+
+The launch configuration starts a local server on `http://localhost:8080` and opens the example diagram.
+
+To preview the currently open HTML file, select `Preview Current HTML File (Chrome)`.
+
 ## Reuse Strategy
 
 Reusable things should graduate out of customer project folders:
