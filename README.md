@@ -99,7 +99,13 @@ External assets belong in `resources/`.
 
 Current packs:
 
-- `resources/icons/azure/` - Azure service SVG icons
+- `resources/icons/azure/` - Azure service SVG icons, searchable with `node resources/icons/azure/find-icons.mjs "<service name>"`
+
+The Azure icon pack includes:
+
+- `resources/icons/azure/icon-index.json` - generated catalog of all SVG icons
+- `resources/icons/azure/find-icons.mjs` - search helper for names, categories, and aliases
+- `resources/icons/azure/build-icon-index.mjs` - index generator to rerun when the icon pack changes
 
 Future examples:
 

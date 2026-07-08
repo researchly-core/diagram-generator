@@ -88,6 +88,7 @@ Use deeper technical styling only for deep-dive diagrams, and still keep the inf
 - Put third-party assets under `resources/`.
 - Do not duplicate large icon packs in project folders.
 - Reference icons by path from the shared resource pack.
+- For Azure diagrams, search the shared catalog before choosing icons: `node resources/icons/azure/find-icons.mjs "<service name>"`.
 - When adding a new resource pack, document its source, license, and date.
 - Prefer official cloud/vendor icons for recognizable managed services.
 - Prefer generic boxes for custom services unless a logo is truly useful.
