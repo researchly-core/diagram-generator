@@ -1,0 +1,323 @@
+.flow-page {
+  position: relative;
+  width: 1500px;
+  min-height: 900px;
+  margin: 0 auto;
+  padding: 16px 26px 14px;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(18, 104, 243, 0.09), transparent 24rem),
+    linear-gradient(180deg, #ffffff, #f8fbff 72%);
+}
+
+.flow-kicker {
+  margin: 0 0 4px;
+  color: var(--diagram-primary-dark);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 820;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.flow-meta {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: -8px 0 16px;
+}
+
+.flow-meta span,
+.concept-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 23px;
+  padding: 4px 9px;
+  border: 1px solid var(--diagram-border);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--diagram-muted);
+  font-size: 10px;
+  font-weight: 760;
+}
+
+.flow-chain {
+  display: grid;
+  grid-template-columns: repeat(var(--flow-columns, 7), minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+.flow-node {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  justify-items: center;
+  min-height: 205px;
+  padding: 12px 10px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--diagram-radius-md);
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.flow-node.boxed {
+  border-color: var(--diagram-border);
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(12, 39, 79, 0.06);
+}
+
+.flow-node:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 84px;
+  right: -23px;
+  width: 24px;
+  height: 2px;
+  background: #111827;
+}
+
+.flow-node:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 78px;
+  right: -29px;
+  z-index: 2;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 11px solid #111827;
+}
+
+.flow-step {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  display: grid;
+  width: 29px;
+  height: 29px;
+  place-items: center;
+  border-radius: 999px;
+  color: #ffffff;
+  background: #007a3d;
+  box-shadow: 0 8px 16px rgba(0, 122, 61, 0.2);
+  font-size: 13px;
+  font-weight: 820;
+}
+
+.flow-icon {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  place-items: center;
+  margin: 18px 0 6px;
+}
+
+.flow-icon img {
+  max-width: 64px;
+  max-height: 64px;
+  object-fit: contain;
+}
+
+.flow-symbol {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  place-items: center;
+  border: 2px solid var(--diagram-primary);
+  border-radius: 18px;
+  background: var(--diagram-primary-soft);
+  color: var(--diagram-primary-dark);
+  font-size: 27px;
+  font-weight: 850;
+}
+
+.flow-concept {
+  margin: 0 0 4px;
+  color: #007a3d;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 830;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.flow-title-small {
+  margin: 0;
+  color: var(--diagram-text);
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.16;
+  font-weight: 820;
+}
+
+.flow-tools {
+  display: grid;
+  gap: 5px;
+  align-self: start;
+  width: 100%;
+  margin-top: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.flow-tools li {
+  padding: 5px 7px;
+  border: 1px solid var(--diagram-border);
+  border-radius: 7px;
+  background: var(--diagram-surface-soft);
+  color: #1f3150;
+  text-align: center;
+  font-size: 10px;
+  line-height: 1.18;
+  font-weight: 700;
+}
+
+.flow-tools li.strong {
+  border-color: var(--diagram-primary);
+  color: var(--diagram-primary-dark);
+  background: #ffffff;
+}
+
+.flow-branch-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-top: 18px;
+}
+
+.flow-branch {
+  position: relative;
+  min-height: 145px;
+  padding: 15px 14px 14px;
+  border: 1px dashed var(--diagram-primary);
+  border-radius: var(--diagram-radius-md);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.flow-branch-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 10px;
+  color: var(--diagram-primary-dark);
+  font-size: 14px;
+  font-weight: 830;
+}
+
+.flow-branch-title img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.flow-branch-list {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flow-branch-list li {
+  display: grid;
+  grid-template-columns: 108px 1fr;
+  gap: 8px;
+  align-items: start;
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.flow-branch-list strong {
+  color: var(--diagram-text);
+  font-weight: 810;
+}
+
+.flow-branch-list span {
+  color: var(--diagram-muted);
+  font-weight: 650;
+}
+
+.foundation-band {
+  display: grid;
+  grid-template-columns: repeat(var(--foundation-columns, 5), minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+  padding: 14px;
+  border: 1px solid var(--diagram-border-strong);
+  border-radius: var(--diagram-radius-md);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 30px rgba(12, 39, 79, 0.05);
+}
+
+.foundation-item {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 8px;
+  align-items: center;
+  min-height: 58px;
+  padding: 8px;
+  border: 1px solid var(--diagram-border);
+  border-radius: var(--diagram-radius-sm);
+  background: #ffffff;
+}
+
+.foundation-item img {
+  width: 31px;
+  height: 31px;
+  object-fit: contain;
+}
+
+.foundation-symbol {
+  display: grid;
+  width: 31px;
+  height: 31px;
+  place-items: center;
+  border: 1px solid var(--diagram-primary);
+  border-radius: 9px;
+  background: var(--diagram-primary-soft);
+  color: var(--diagram-primary-dark);
+  font-size: 10px;
+  font-weight: 850;
+}
+
+.foundation-item strong {
+  display: block;
+  color: var(--diagram-primary-dark);
+  font-size: 11px;
+  line-height: 1.1;
+  font-weight: 810;
+}
+
+.foundation-item span {
+  display: block;
+  margin-top: 2px;
+  color: var(--diagram-muted);
+  font-size: 9px;
+  line-height: 1.15;
+  font-weight: 650;
+}
+
+.flow-callout {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 10px;
+  align-items: start;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--diagram-warning);
+  border-radius: var(--diagram-radius-sm);
+  background: #fff8e9;
+  color: #6f4800;
+  font-size: 11px;
+  line-height: 1.3;
+  font-weight: 690;
+}
+
+.flow-callout strong {
+  color: #5f3c00;
+}
+
+.source-note.flow-source {
+  margin-top: 8px;
+}

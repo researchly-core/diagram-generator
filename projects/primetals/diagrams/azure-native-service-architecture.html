@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1500, initial-scale=1">
+    <title>Primetals Azure-native Servicearchitektur</title>
+    <link rel="stylesheet" href="../../../src/diagram-css/base.css">
+    <link rel="stylesheet" href="../../../src/diagram-css/utilities.css">
+    <link rel="stylesheet" href="../../../src/diagram-css/themes/researchly.css">
+    <link rel="stylesheet" href="../../../src/diagram-css/architecture-flow.css">
+  </head>
+  <body class="brand-researchly">
+    <main class="flow-page" style="--flow-columns: 7; --foundation-columns: 6;">
+      <p class="flow-kicker">Azure-native Zielbild · Container / Component View</p>
+      <h1 class="diagram-title">Primetals PoC Servicearchitektur</h1>
+      <p class="diagram-subtitle">Gemeinsame Dokumentenbasis für MM Characteristics Recommender und P&amp;E RAG Chatbot</p>
+      <div class="flow-meta" aria-label="Diagrammkontext">
+        <span>Audience: Kunde, Architekt, Engineering</span>
+        <span>Level: Container + zentrale Komponenten</span>
+        <span>Source: Architektur.md</span>
+      </div>
+
+      <section class="flow-chain" aria-label="Azure-native Hauptfluss">
+        <article class="flow-node" data-component="flow-node">
+          <div class="flow-step">1</div>
+          <div class="flow-icon">
+            <div class="flow-symbol">PDF</div>
+          </div>
+          <p class="flow-concept">Datenquellen</p>
+          <h2 class="flow-title-small">Direktabzug, PDFs, DOCX, XML</h2>
+          <ul class="flow-tools">
+            <li class="strong">Primärinput: technische Projektdokumente</li>
+            <li>Materialstamm, Zeichnungen, Datenblätter, Spezifikationen</li>
+            <li>VAIDrawing XML und strukturierte Metadaten</li>
+          </ul>
+        </article>
+
+        <article class="flow-node boxed" data-component="flow-node">
+          <div class="flow-step">2</div>
+          <div class="flow-icon">
+            <img src="../../../resources/icons/azure/storage/10086-icon-service-Storage-Accounts.svg" alt="">
+          </div>
+          <p class="flow-concept">Ingestion</p>
+          <h2 class="flow-title-small">Landing Zone &amp; Orchestrierung</h2>
+          <ul class="flow-tools">
+            <li class="strong">Azure Blob Storage / ADLS Gen2</li>
+            <li>Azure Functions oder Azure Container Apps</li>
+            <li>Pipeline für Parsing, OCR, Mapping, Quality Runs</li>
+          </ul>
+        </article>
+
+        <article class="flow-node boxed" data-component="flow-node">
+          <div class="flow-step">3</div>
+          <div class="flow-icon">
+            <img src="../../../resources/icons/azure/ai + machine learning/00819-icon-service-Form-Recognizers.svg" alt="">
+          </div>
+          <p class="flow-concept">Extraction</p>
+          <h2 class="flow-title-small">OCR Router, Classifier, Metadata Mapper</h2>
+          <ul class="flow-tools">
+            <li class="strong">Azure AI Document Intelligence</li>
+            <li>Azure OpenAI / AI Foundry Klassifikation</li>
+            <li>Python Rules für Tabellen, XML und Lineage</li>
+          </ul>
+        </article>
+
+        <article class="flow-node boxed" data-component="flow-node">
+          <div class="flow-step">4</div>
+          <div class="flow-icon">
+            <img src="../../../resources/icons/azure/databases/10130-icon-service-SQL-Database.svg" alt="">
+          </div>
+          <p class="flow-concept">Storage</p>
+          <h2 class="flow-title-small">Canonical Document Store</h2>
+          <ul class="flow-tools">
+            <li class="strong">ADLS Gen2 für normalisierte Inhalte</li>
+            <li>Azure SQL oder Cosmos DB für Metadata Lineage</li>
+            <li>DocumentId, PageId, TableId, ChunkId</li>
+          </ul>
+        </article>
+
+        <article class="flow-node boxed" data-component="flow-node">
+          <div class="flow-step">5</div>
+          <div class="flow-icon">
+            <img src="../../../resources/icons/azure/ai + machine learning/03438-icon-service-Azure-OpenAI.svg" alt="">
+          </div>
+          <p class="flow-concept">Indexer</p>
+          <h2 class="flow-title-small">Chunking, Embeddings, Batch Jobs</h2>
+          <ul class="flow-tools">
+            <li class="strong">Azure OpenAI Embeddings</li>
+            <li>Azure Container Apps Jobs / Functions</li>
+            <li>Azure Service Bus für Retry und Dead Letter</li>
+          </ul>
+        </article>
+
+        <article class="flow-node boxed" data-component="flow-node">
+          <div class="flow-step">6</div>
+          <div class="flow-icon">
+            <img src="../../../resources/icons/azure/ai + machine learning/10044-icon-service-Cognitive-Search.svg" alt="">
+          </div>
+          <p class="flow-concept">Retrieval</p>
+          <h2 class="flow-title-small">Projektbezogene Knowledge Base</h2>
+          <ul class="flow-tools">
+            <li class="strong">Azure AI Search: Vector + BM25</li>
+            <li>Projektfilter, DocumentNo, Revision, Dokumenttyp</li>
+            <li>Reranking und Top-K Context Package</li>
+          </ul>
+        </article>
+
+        <article class="flow-node boxed" data-component="flow-node">
+          <div class="flow-step">7</div>
+          <div class="flow-icon">
+            <img src="../../../resources/icons/azure/app services/10035-icon-service-App-Services.svg" alt="">
+          </div>
+          <p class="flow-concept">Applications</p>
+          <h2 class="flow-title-small">Recommender &amp; P&amp;E Chatbot</h2>
+          <ul class="flow-tools">
+            <li class="strong">Prompt &amp; Grounding Service</li>
+            <li>Azure OpenAI Antwortgenerierung mit Quellenpflicht</li>
+            <li>JSON Output, Chat UI, Human Review</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="flow-branch-row" aria-label="Produkt- und Erweiterungspfade">
+        <article class="flow-branch">
+          <h2 class="flow-branch-title">
+            <img src="../../../resources/icons/azure/ai + machine learning/03438-icon-service-Azure-OpenAI.svg" alt="">
+            Stage 1 · MM Characteristics Recommender
+          </h2>
+          <ul class="flow-branch-list">
+            <li><strong>Extraction</strong><span>ECLASS-Vorschlag, Characteristics, Werte, Einheiten</span></li>
+            <li><strong>Grounding</strong><span>Quellen je Material und Dokumentpaket</span></li>
+            <li><strong>Review</strong><span>Confidence und Human-in-the-Loop Status</span></li>
+          </ul>
+        </article>
+
+        <article class="flow-branch">
+          <h2 class="flow-branch-title">
+            <img src="../../../resources/icons/azure/ai + machine learning/10044-icon-service-Cognitive-Search.svg" alt="">
+            Stage 2 · P&amp;E RAG Chatbot
+          </h2>
+          <ul class="flow-branch-list">
+            <li><strong>Retrieval API</strong><span>Glossar, Projektfilter, Hybrid Search, Reranking</span></li>
+            <li><strong>Answer API</strong><span>Antwort nur mit referenzierten Quellen</span></li>
+            <li><strong>Citations</strong><span>Dokumentnummer, Seite, ChunkId, optional Link</span></li>
+          </ul>
+        </article>
+
+        <article class="flow-branch">
+          <h2 class="flow-branch-title">
+            <img src="../../../resources/icons/azure/ai + machine learning/03513-icon-service-AI-Studio.svg" alt="">
+            Stage 3 · Agentic Extensions
+          </h2>
+          <ul class="flow-branch-list">
+            <li><strong>Tool Registry</strong><span>MCP oder REST Tools für RAG, Recommender, Excel, SAP</span></li>
+            <li><strong>Agents</strong><span>Azure AI Foundry Agents oder Microsoft Agent Framework</span></li>
+            <li><strong>Governance</strong><span>Human Approval, Audit Logging, Monitoring</span></li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="foundation-band" aria-label="Azure Foundation">
+        <div class="foundation-item">
+          <img src="../../../resources/icons/azure/security/10245-icon-service-Key-Vaults.svg" alt="">
+          <div><strong>Secrets &amp; Config</strong><span>Azure Key Vault für API Keys, Endpoints, Modellnamen</span></div>
+        </div>
+        <div class="foundation-item">
+          <img src="../../../resources/icons/azure/monitor/00012-icon-service-Application-Insights.svg" alt="">
+          <div><strong>Observability</strong><span>Azure Monitor und Application Insights für Logs, Traces, Runtime-Metriken</span></div>
+        </div>
+        <div class="foundation-item">
+          <div class="foundation-symbol">ML</div>
+          <div><strong>Evaluation</strong><span>MLflow Runs für OCR, Tabellenqualität, Recall, Faithfulness, Citations</span></div>
+        </div>
+        <div class="foundation-item">
+          <img src="../../../resources/icons/azure/integration/10836-icon-service-Azure-Service-Bus.svg" alt="">
+          <div><strong>Reliability</strong><span>Azure Service Bus für Retry, Dead Letter Queue und Batch-Entkopplung</span></div>
+        </div>
+        <div class="foundation-item">
+          <img src="../../../resources/icons/azure/networking/10061-icon-service-Virtual-Networks.svg" alt="">
+          <div><strong>Security Boundary</strong><span>VNet, Private Endpoints und projektbezogene Datenbereiche</span></div>
+        </div>
+        <div class="foundation-item">
+          <img src="../../../resources/icons/azure/other/02989-icon-service-Container-Apps-Environments.svg" alt="">
+          <div><strong>Runtime</strong><span>Container Apps und Jobs für austauschbare Services</span></div>
+        </div>
+      </section>
+
+      <div class="flow-callout">
+        <div class="foundation-symbol">G</div>
+        <div><strong>Go/No-Go Gate:</strong> MLflow-Metriken, Datenqualitäts-Assessment und Quellenfähigkeit entscheiden, ob der PoC in einen produktiven Ausbaupfad überführt wird.</div>
+      </div>
+
+      <p class="source-note flow-source">Source: projects/primetals/docs/architecture.md, synced from Notion Architektur on 2026-07-08.</p>
+    </main>
+  </body>
+</html>

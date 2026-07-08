@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1500, initial-scale=1">
+    <title>Primetals Open-Source Azure Architektur</title>
+    <link rel="stylesheet" href="../../../src/diagram-css/base.css">
+    <link rel="stylesheet" href="../../../src/diagram-css/utilities.css">
+    <link rel="stylesheet" href="../../../src/diagram-css/themes/researchly.css">
+    <link rel="stylesheet" href="../../../src/diagram-css/architecture-flow.css">
+  </head>
+  <body class="brand-researchly">
+    <main class="flow-page" style="--flow-columns: 7; --foundation-columns: 6;">
+      <p class="flow-kicker">Portable Zielbild · Azure-hosted Open Source Stack</p>
+      <h1 class="diagram-title">Primetals PoC Architektur mit minimalem Lock-in</h1>
+      <p class="diagram-subtitle">Offene Frameworks für Ingestion, Indexierung und Retrieval; Azure als Cloud- und Security-Fundament</p>
+      <div class="flow-meta" aria-label="Diagrammkontext">
+        <span>Audience: Kunde, Architekt, Engineering</span>
+        <span>Level: Container + austauschbare Komponenten</span>
+        <span>Goal: Portabilität, offene Datenformate, klare Adapter</span>
+      </div>
+
+      <section class="flow-chain" aria-label="Open-Source Hauptfluss auf Azure">
+        <article class="flow-node" data-component="flow-node">
+          <div class="flow-step">1</div>
+          <div class="flow-icon">
+            <div class="flow-symbol">DOC</div>
+          </div>
+          <p class="flow-concept">Datenquellen</p>
+          <h2 class="flow-title-small">Projekt- und Engineering-Dokumente</h2>
+          <ul class="flow-tools">
+            <li class="strong">PDF, DOCX, XML, STL, Tabellenexporte</li>
+            <li>Dokumentpakete pro Projekt und Material</li>
+            <li>Metadaten bleiben als offene JSON/Parquet Artefakte erhalten</li>
+          </ul>
+        </article>
+
+        <article class="flow-node boxed" data-component="flow-node">
+          <div class="flow-step">2</div>
+          <div class="flow-icon">
+            <img src="../../../resources/icons/azure/other/02989-icon-service-Container-Apps-Environments.svg" alt="">
+          </div>
+          <p class="flow-concept">Ingestion</p>
+          <h2 class="flow-title-small">Portable Pipeline Runtime</h2>
+          <ul class="flow-tools">
+            <li class="strong">FastAPI Services auf Azure Container Apps oder AKS</li>
+            <li>Temporal, Prefect oder Dagster für Workflows</li>
+            <li>Docker Images in Azure Container Registry</li>
+          </ul>
+        </article>
+
+        <article class="flow-node boxed" data-component="flow-node">
+          <div class="flow-step">3</div>
+          <div class="flow-icon">
+            <div class="flow-symbol">OCR</div>
+          </div>
+          <p class="flow-concept">Extraction</p>
+          <h2 class="flow-title-small">OSS OCR Router &amp; Parser</h2>
+          <ul class="flow-tools">
+            <li class="strong">Docling, PyMuPDF, pypdf, Pandas</li>
+            <li>Tesseract, PaddleOCR oder Mistral OCR Adapter</li>
+            <li>Optionaler Azure Document Intelligence Adapter</li>
+          </ul>
+        </article>
+
+        <article class="flow-node boxed" data-component="flow-node">
+          <div class="flow-step">4</div>
+          <div class="flow-icon">
+            <img src="../../../resources/icons/azure/storage/10086-icon-service-Storage-Accounts.svg" alt="">
+          </div>
+          <p class="flow-concept">Storage</p>
+          <h2 class="flow-title-small">Open Document Lake</h2>
+          <ul class="flow-tools">
+            <li class="strong">Azure Blob / ADLS Gen2 als Filesystem Boundary</li>
+            <li>Parquet, JSON, Markdown, images, extracted tables</li>
+            <li>lakeFS oder DVC optional für Versionierung</li>
+          </ul>
+        </article>
+
+        <article class="flow-node boxed" data-component="flow-node">
+          <div class="flow-step">5</div>
+          <div class="flow-icon">
+            <div class="flow-symbol">IDX</div>
+          </div>
+          <p class="flow-concept">Indexer</p>
+          <h2 class="flow-title-small">Embeddings &amp; Chunk Jobs</h2>
+          <ul class="flow-tools">
+            <li class="strong">SentenceTransformers, BGE, E5 oder instructor models</li>
+            <li>vLLM, TEI oder Ollama für self-hosted inference</li>
+            <li>LiteLLM Adapter für Azure OpenAI oder andere Provider</li>
+          </ul>
+        </article>
+
+        <article class="flow-node boxed" data-component="flow-node">
+          <div class="flow-step">6</div>
+          <div class="flow-icon">
+            <img src="../../../resources/icons/azure/databases/10131-icon-service-Azure-Database-PostgreSQL-Server.svg" alt="">
+          </div>
+          <p class="flow-concept">Retrieval</p>
+          <h2 class="flow-title-small">Open Knowledge Base</h2>
+          <ul class="flow-tools">
+            <li class="strong">PostgreSQL + pgvector oder Qdrant</li>
+            <li>OpenSearch für BM25 und exakte Dokumentnummern</li>
+            <li>Cross-encoder Reranker und Metadata Filter</li>
+          </ul>
+        </article>
+
+        <article class="flow-node boxed" data-component="flow-node">
+          <div class="flow-step">7</div>
+          <div class="flow-icon">
+            <div class="flow-symbol">API</div>
+          </div>
+          <p class="flow-concept">Applications</p>
+          <h2 class="flow-title-small">RAG APIs, Recommender, UI</h2>
+          <ul class="flow-tools">
+            <li class="strong">FastAPI Retrieval API und Answer API</li>
+            <li>LangGraph oder LlamaIndex für RAG Composition</li>
+            <li>Next.js, Streamlit oder Gradio für UI Prototypen</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="flow-branch-row" aria-label="Lock-in Strategie">
+        <article class="flow-branch">
+          <h2 class="flow-branch-title">
+            <img src="../../../resources/icons/azure/networking/00427-icon-service-Private-Link.svg" alt="">
+            Azure bleibt Fundament
+          </h2>
+          <ul class="flow-branch-list">
+            <li><strong>Cloud Substrate</strong><span>AKS oder Container Apps, Blob / ADLS, ACR, VNet, Private Link</span></li>
+            <li><strong>Managed Data</strong><span>Azure Database for PostgreSQL für pgvector und Metadaten</span></li>
+            <li><strong>Security</strong><span>Key Vault, Managed Identity, Network Isolation</span></li>
+          </ul>
+        </article>
+
+        <article class="flow-branch">
+          <h2 class="flow-branch-title">
+            <img src="../../../resources/icons/azure/containers/10023-icon-service-Kubernetes-Services.svg" alt="">
+            Austauschbare Komponenten
+          </h2>
+          <ul class="flow-branch-list">
+            <li><strong>OCR</strong><span>Router kapselt Docling, Tesseract, PaddleOCR oder Azure DI</span></li>
+            <li><strong>Models</strong><span>LiteLLM / OpenAI-compatible APIs kapseln Providerwechsel</span></li>
+            <li><strong>Index</strong><span>Repository Interface für pgvector, Qdrant, OpenSearch oder Azure AI Search</span></li>
+          </ul>
+        </article>
+
+        <article class="flow-branch">
+          <h2 class="flow-branch-title">
+            <img src="../../../resources/icons/azure/management + governance/00756-icon-service-Azure-Arc.svg" alt="">
+            Portabilitäts-Regeln
+          </h2>
+          <ul class="flow-branch-list">
+            <li><strong>Formats</strong><span>Parquet, JSON, Markdown und OCI Images statt proprietärer Payloads</span></li>
+            <li><strong>Contracts</strong><span>FastAPI/OpenAPI, typed schemas, explicit adapters</span></li>
+            <li><strong>Ops Trade-off</strong><span>Weniger Service-Lock-in, dafür mehr Betrieb und Modellverantwortung</span></li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="foundation-band" aria-label="Azure-hosted Open Source Foundation">
+        <div class="foundation-item">
+          <img src="../../../resources/icons/azure/compute/10023-icon-service-Kubernetes-Services.svg" alt="">
+          <div><strong>Compute Runtime</strong><span>AKS oder Container Apps für containerisierte Services und Workers</span></div>
+        </div>
+        <div class="foundation-item">
+          <img src="../../../resources/icons/azure/containers/10105-icon-service-Container-Registries.svg" alt="">
+          <div><strong>Container Supply</strong><span>Azure Container Registry, OCI Images, GitOps optional</span></div>
+        </div>
+        <div class="foundation-item">
+          <img src="../../../resources/icons/azure/security/10245-icon-service-Key-Vaults.svg" alt="">
+          <div><strong>Secrets</strong><span>Key Vault plus External Secrets oder workload identity</span></div>
+        </div>
+        <div class="foundation-item">
+          <img src="../../../resources/icons/azure/networking/10061-icon-service-Virtual-Networks.svg" alt="">
+          <div><strong>Network Boundary</strong><span>VNet, Private Link, private endpoints, project isolation</span></div>
+        </div>
+        <div class="foundation-item">
+          <div class="foundation-symbol">OT</div>
+          <div><strong>Observability</strong><span>OpenTelemetry, Prometheus, Grafana, Loki; Azure Monitor optional</span></div>
+        </div>
+        <div class="foundation-item">
+          <div class="foundation-symbol">ML</div>
+          <div><strong>Evaluation</strong><span>MLflow für vergleichbare Runs und Artefakte über alle Adapter</span></div>
+        </div>
+      </section>
+
+      <div class="flow-callout">
+        <div class="foundation-symbol">AD</div>
+        <div><strong>Minimal-Lock-in Prinzip:</strong> Azure liefert Betrieb, Security und Managed Infrastructure; fachliche Intelligenz, Datenformate, Retrieval-Verträge und Modellzugriffe bleiben über offene Frameworks und Adapter austauschbar.</div>
+      </div>
+
+      <p class="source-note flow-source">Source: projects/primetals/docs/architecture.md, translated into an Azure-hosted open-source architecture option.</p>
+    </main>
+  </body>
+</html>

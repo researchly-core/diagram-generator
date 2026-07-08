@@ -26,6 +26,30 @@
       }
     },
     {
+      "name": "Preview Primetals Azure Native Architecture (Edge)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:8080/projects/primetals/diagrams/azure-native-service-architecture.html",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "serve diagrams",
+      "presentation": {
+        "group": "diagram-preview",
+        "order": 4
+      }
+    },
+    {
+      "name": "Preview Primetals Open Source Azure Architecture (Edge)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:8080/projects/primetals/diagrams/open-source-azure-architecture.html",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "serve diagrams",
+      "presentation": {
+        "group": "diagram-preview",
+        "order": 5
+      }
+    },
+    {
       "name": "Preview Current HTML File (Edge)",
       "type": "msedge",
       "request": "launch",
@@ -34,7 +58,7 @@
       "preLaunchTask": "serve diagrams",
       "presentation": {
         "group": "diagram-preview",
-        "order": 4
+        "order": 6
       }
     }
   ]

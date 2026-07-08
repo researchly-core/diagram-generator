@@ -160,6 +160,7 @@ The project uses a small in-house utility layer instead of a framework like Tail
 
 - `src/diagram-css/base.css` defines tokens and component styles.
 - `src/diagram-css/utilities.css` defines reusable layout utilities such as `u-grid`, `u-cols-2`, `u-gap-12`, `u-items-center`, and `u-panel`.
+- `src/diagram-css/architecture-flow.css` defines numbered left-to-right service flow diagrams with branches and foundation bands.
 - Theme files in `src/diagram-css/themes/` override brand variables.
 
 Use component classes for meaning and utility classes for simple layout adjustments.

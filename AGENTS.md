@@ -62,6 +62,7 @@ Use these levels unless the project asks for something else:
 - Reuse snippets from `src/components/` for common structures such as zones, subpanels, service rows, stages, pipelines, and metrics.
 - Keep `data-component` attributes when using a shared snippet so future AI passes can recognize reusable blocks.
 - Use `src/diagram-css/utilities.css` for small layout needs such as grid columns, gaps, alignment, and simple panels.
+- Use `src/diagram-css/architecture-flow.css` for Azure-style numbered service flows with branches and foundation bands.
 - Prefer meaningful component classes first, then add utility classes only where they reduce one-off CSS.
 - Keep each diagram responsive enough to inspect on common desktop widths.
 - Use CSS variables for colors, spacing, typography, and shadows.
