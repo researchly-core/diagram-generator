@@ -10,16 +10,19 @@ This repo should improve over time. When a pattern, prompt, component, style, or
 
 ## Repository Map
 
-- `projects/` contains customer or product-specific work.
-- `templates/` contains copyable starter diagrams.
+- `projects/` contains customer or product-specific work. Project diagrams, data, docs, and exports should stay inside the project folder.
 - `src/diagram-css/` contains shared styling, design tokens, themes, and layout utilities.
 - `src/components/` contains reusable diagram elements.
-- `src/layouts/` contains reusable composition patterns.
 - `resources/` contains external assets such as cloud icons, logos, fonts, and references.
-- `prompts/` contains reusable AI prompts and intake templates.
 - `docs/` contains standards, decisions, quality checklists, and references.
-- `examples/` contains finished diagrams that represent the quality bar.
-- `exports/` contains generated deliverables, not source-of-truth diagram code.
+- `examples/` contains generic finished diagrams that represent the quality bar and are not tied to a single customer project.
+- `exports/` contains generic generated deliverables only. Project-specific exports belong under `projects/<project-name>/exports/`.
+
+Future folders should be created only when they have real content:
+
+- `templates/` for stable starter diagrams.
+- `src/layouts/` for repeated composition patterns.
+- `prompts/` for reusable intake or generation prompts.
 
 ## Diagram Quality Bar
 
@@ -95,9 +98,10 @@ For a new project:
 
 1. Create `projects/<project-name>/`.
 2. Add `brief.md` with audience, purpose, scope, known systems, constraints, and source links.
-3. Add diagrams under `projects/<project-name>/diagrams/`.
-4. Add generated deliverables under `projects/<project-name>/exports/`.
-5. Add project-specific notes under `projects/<project-name>/notes/`.
+3. Add source data under `projects/<project-name>/data/` when diagrams are data-driven.
+4. Add diagrams under `projects/<project-name>/diagrams/`.
+5. Add generated deliverables under `projects/<project-name>/exports/`.
+6. Add project-specific notes under `projects/<project-name>/docs/`.
 
 For existing projects:
 

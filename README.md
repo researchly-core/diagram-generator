@@ -2,7 +2,7 @@
 
 Reusable workspace for creating polished, customer-facing architecture diagrams with HTML and CSS.
 
-The goal is to let AI generate diagrams for many projects while this repository improves over time: shared styles, layout patterns, icon catalogs, prompts, review checklists, and export workflows should become reusable building blocks instead of one-off artifacts.
+The goal is to let AI generate diagrams for many projects while this repository improves over time: shared styles, reusable components, icon catalogs, brand profiles, prompts, and export workflows should become building blocks instead of one-off artifacts.
 
 ## What This Repo Is For
 
@@ -18,20 +18,33 @@ The goal is to let AI generate diagrams for many projects while this repository 
 .
 ├── AGENTS.md                  # Instructions for AI agents working in this repo
 ├── README.md                  # Project overview and workflow
-├── docs/                      # Diagram standards, decision records, references
-├── examples/                  # Small finished diagrams used as quality references
-├── exports/                   # Generated PNG/PDF/SVG outputs; usually not source of truth
-├── projects/                  # Customer/project-specific diagram workspaces
-├── prompts/                   # Reusable prompts and intake templates
-├── resources/                 # External visual/reference assets
-│   └── icons/
-│       └── azure/             # Azure icon pack
-├── src/                       # Reusable diagram system code
-│   ├── components/            # HTML snippets or web components for nodes, groups, legends
-│   ├── diagram-css/           # Shared visual language: tokens, utilities, themes
-│   └── layouts/               # Reusable layout patterns
-└── templates/                 # Copyable starter diagrams
+├── docs/                      # Shared standards, brand profiles, references
+├── examples/                  # Generic examples that are not tied to one customer project
+├── exports/                   # Generic/generated exports, not source of truth
+├── projects/                  # Customer/project-specific workspaces
+├── resources/                 # External assets such as cloud icons
+└── src/                       # Reusable diagram system code
+    ├── components/            # Copyable HTML snippets for diagram building blocks
+    └── diagram-css/           # Shared tokens, utilities, component CSS, themes
 ```
+
+The current top-level structure is intentionally small. Customer-specific diagrams, data, source notes, and exports belong under `projects/<project-name>/`.
+
+## Current Project
+
+```text
+projects/primetals/
+├── data/
+│   └── modules.json           # Synced Notion Modulübersicht rows
+├── diagrams/
+│   └── module-architecture.html
+├── docs/
+│   └── architecture.md        # Markdown base from the Notion Architektur page
+└── exports/
+    └── module-architecture.png
+```
+
+The Primetals diagram renders from `projects/primetals/data/modules.json`.
 
 ## Recommended Project Layout
 
@@ -41,12 +54,13 @@ Each project in `projects/` should be self-contained:
 projects/acme-platform/
 ├── README.md                  # Project-specific context and diagram index
 ├── brief.md                   # Inputs, audience, constraints, source links
+├── data/                      # JSON/CSV/source extracts used by diagrams
 ├── diagrams/
 │   ├── 01-context.html
 │   ├── 02-container.html
 │   └── 03-deep-dive.html
-├── notes/
-│   └── architecture-decisions.md
+├── docs/
+│   └── architecture.md
 └── exports/
     ├── 01-context.png
     └── 02-container.pdf
@@ -72,12 +86,12 @@ Use this naming convention for diagrams:
 
 ## AI Workflow
 
-1. Capture inputs in a project `brief.md`.
-2. Ask AI to choose the right diagram level before drawing.
-3. Generate or update an HTML diagram using shared CSS from `src/diagram-css/`.
-4. Review the diagram against `AGENTS.md`.
-5. Export to `projects/<name>/exports/` for delivery.
-6. Promote reusable patterns back into `src/`, `templates/`, `prompts/`, or `docs/`.
+1. Capture inputs in a project `brief.md` or project `docs/`.
+2. Put structured source data under `projects/<name>/data/`.
+3. Generate or update HTML diagrams under `projects/<name>/diagrams/`.
+4. Reuse shared CSS from `src/diagram-css/` and snippets from `src/components/`.
+5. Export deliverables to `projects/<name>/exports/`.
+6. Promote reusable patterns back into `src/`, `docs/`, or future templates.
 
 ## Resource Packs
 
@@ -110,26 +124,13 @@ Use `docs/brand-profile-template.md` when adding a new customer CI.
 
 ## Examples
 
+Generic examples live in `examples/`.
+
 Current examples:
 
 - `examples/researchly-azure-ai-architecture.html` - wide Azure AI architecture example inspired by the provided reference diagram and Researchly style
-- `examples/primetals-module-architecture.html` - module architecture rendered from `data/primetals-modules.json`
 
-## Data
-
-Data files live in `data/`.
-
-Current data:
-
-- `data/primetals-modules.json` - completed (`Erledigt`) Notion modules synced from the Primetals `Modulübersicht` database
-
-## Architecture Sources
-
-Architecture source notes live in `docs/`.
-
-Current architecture docs:
-
-- `docs/primetals-architecture.md` - Markdown base derived from the Notion `Architektur` page
+Project-specific examples should move into `projects/<name>/diagrams/` once they become real customer/project work.
 
 ## Components
 
@@ -145,7 +146,7 @@ Current components:
 - `stage.html` - application/use-case stage
 - `metric.html` - evaluation metric tile
 
-The examples remain plain HTML. Components are copyable snippets styled by `src/diagram-css/base.css` and the active theme. Example markup may include `data-component` attributes so humans, AI agents, and future scripts can recognize reusable blocks.
+The diagrams remain plain HTML. Components are copyable snippets styled by `src/diagram-css/base.css` and the active theme. Example markup may include `data-component` attributes so humans, AI agents, and future scripts can recognize reusable blocks.
 
 ## Utility CSS
 
@@ -162,28 +163,27 @@ Use component classes for meaning and utility classes for simple layout adjustme
 Use the Run and Debug panel to preview diagrams:
 
 1. Open `Run and Debug`.
-2. Select `Preview Researchly Example (Chrome)` or `Preview Researchly Example (Edge)`.
+2. Select `Preview Researchly Example (Edge)`, `Preview Primetals Module Architecture (Edge)`, or `Preview Current HTML File (Edge)`.
 3. Press `F5`.
 
-The launch configuration starts a local server on `http://localhost:8080` and opens the example diagram.
+The launch configuration starts a local server on `http://localhost:8080` and opens the selected diagram in Edge.
 
-To preview the currently open HTML file, select `Preview Current HTML File (Chrome)`.
+## Empty/Future Folders
+
+Some early scaffold folders were intentionally left out of the active structure:
+
+- `templates/` is useful once we have stable starter diagrams. Until then, generic examples and components are enough.
+- `src/layouts/` is useful once repeated layout patterns emerge. Right now layouts are still evolving inside diagrams and CSS.
+- `prompts/` is useful once repeated generation prompts stabilize. Until then, `AGENTS.md` carries the main AI guidance.
+
+These folders should only stay if they receive real content soon; otherwise they can be removed and recreated when needed.
 
 ## Reuse Strategy
 
 Reusable things should graduate out of customer project folders:
 
-- A visual pattern used twice goes into `src/layouts/`.
 - A repeated diagram element goes into `src/components/`.
-- A repeated prompt goes into `prompts/`.
+- A repeated CSS pattern goes into `src/diagram-css/`.
 - A repeated quality rule goes into `AGENTS.md`.
-- A finished diagram that represents the desired quality bar goes into `examples/`.
-
-## Next Good Additions
-
-- Base CSS tokens for typography, colors, spacing, arrows, groups, and legends
-- A context diagram template
-- A container diagram template
-- A Playwright export script for PNG/PDF generation
-- An icon index/search helper for Azure icons
-- A diagram review checklist in `docs/`
+- A customer-independent example goes into `examples/`.
+- A stable starter diagram can become a future `templates/` entry.

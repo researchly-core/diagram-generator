@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=1500, initial-scale=1">
     <title>Primetals Modularchitektur aus Notion JSON</title>
-    <link rel="stylesheet" href="../src/diagram-css/base.css">
-    <link rel="stylesheet" href="../src/diagram-css/utilities.css">
-    <link rel="stylesheet" href="../src/diagram-css/themes/researchly.css">
+    <link rel="stylesheet" href="../../../src/diagram-css/base.css">
+    <link rel="stylesheet" href="../../../src/diagram-css/utilities.css">
+    <link rel="stylesheet" href="../../../src/diagram-css/themes/researchly.css">
     <style>
       .module-page {
         width: 1500px;
@@ -292,7 +292,7 @@
         return card;
       };
 
-      fetch("../data/primetals-modules.json")
+      fetch("../data/modules.json")
         .then((response) => response.json())
         .then((data) => {
           const modules = data.modules.slice().sort((a, b) => a.title.localeCompare(b.title, "de"));
