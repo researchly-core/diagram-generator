@@ -1,0 +1,157 @@
+{
+  "source": {
+    "name": "Modulübersicht",
+    "url": "https://app.notion.com/p/researchly/396e185400fb808d85f3d7705fa7c84a?v=397e185400fb80ed8ef5000ca9bce6ee",
+    "syncedAt": "2026-07-08",
+    "filter": "Status = Erledigt"
+  },
+  "modules": [
+    {
+      "url": "https://app.notion.com/p/396e185400fb80869982cab859ee852f",
+      "title": "M0-SCO-B - Scoping-Basis",
+      "aufwand": 24,
+      "paket": "Basis",
+      "content": "### Ziel\nVor Entwicklungsbeginn ein gemeinsames Verständnis von Umfang, Zugängen und messbaren Erfolgskriterien für P&E Chatbot und MM Characteristics Recommender herstellen.\n\n### Leistungsumfang\n- Kickoff- und Scoping-Workshop mit fachlichen und technischen Ansprechpartnern.\n- Einrichtung von Azure-Zugängen sowie Projekt- und Arbeitsumgebung.\n- Definition relevanter Metaattribute zur Gruppierung der Dokumente.\n- Abstimmung eines Domänen-Glossars v0.1.\n- Einholen der Liste freigegebener Primetals-Services.\n- Gemeinsame Definition der Akzeptanz- und Erfolgslogik inklusive Go/No-Go-Verständnis.\n\n### Ergebnis\nScope-Dokument inklusive Erfolgskriterien je Komponente, finaler Projekt- und Materialstamm-Liste, Zugangskonzept, Domänen-Glossar v0.1 und grobem Projekt-/Zeitplan."
+    },
+    {
+      "url": "https://app.notion.com/p/396e185400fb80a9a00ff2dab12d210d",
+      "title": "M0-SCO-C - Scoping-Chat",
+      "aufwand": 4,
+      "paket": "Chatbot",
+      "content": "### Leistungsumfang\n- Festlegung der 5 PoC-Projekte.\n- Klärung des Datenzugangs: Direktabzug, Format, Übergabeweg, Struktur und Vollständigkeit.\n- Abstimmung der Referenzfragen je Projekt mit den Fachexperten.\n\n### Fokus\nP&E Chatbot-spezifische Scope- und Bewertungsgrundlage."
+    },
+    {
+      "url": "https://app.notion.com/p/396e185400fb80ef8370eb6006e6029c",
+      "title": "M0-SCO-R - Scoping-Recommender",
+      "aufwand": 4,
+      "paket": "Recommender",
+      "content": "### Leistungsumfang\n- Festlegung der Pilot-Materialstämme inklusive zugehöriger Dokumente und Klassifizierung.\n- Abstimmung des Golden Datasets mit erwarteten Merkmalen, Werten und Quellen.\n- Festlegung des Start-Betriebsmodus und der Erfolgskriterien.\n\n### Metriken\nExtraktions-Trefferquote je Sachmerkmal, Quellenbeleg, Reproduzierbarkeit sowie Vollständigkeit/Relevanz im offenen Modus."
+    },
+    {
+      "url": "https://app.notion.com/p/396e185400fb808cbe8ec69533858936",
+      "title": "M1-ING-B - Ingestion-Basis",
+      "aufwand": 50,
+      "paket": "Basis",
+      "content": "### Ziel\nHeterogene Projektdokumentation maschinenlesbar, strukturiert und durchsuchbar machen. Die Pipeline ist die gemeinsame Datenbasis für P&E Chatbot und MM Characteristics Recommender.\n\n### Pipeline-Entwicklung\n- Dokument-Router und Clustering für gezieltere Pipeline-Entwicklung.\n- Wiederverwendbare Ingestion-Pipeline.\n- Text- und Tabellenextraktion inklusive Stücklisten/STL.\n- OCR-Fallback für gescannte oder zeichnungslastige PDFs.\n- Bereinigung und Normalisierung.\n- Vergleich von OCR-/Parsing-Modulen wie Azure Document Intelligence, Docling und optional Mistral OCR.\n\n### Skalierung\n- Anwendung auf wachsende Dokumentmengen.\n- Fine-Tuning je Dokumenttyp.\n- Behandlung von Edge Cases wie schlechte Scans und verschachtelte Tabellen.\n\n### Ergebnis\nLauffähige wiederverwendbare Ingestion-Pipeline und Datenqualitätsbewertung."
+    },
+    {
+      "url": "https://app.notion.com/p/396e185400fb8030856ddfb885529f06",
+      "title": "M1-ING-C - Ingestion-Chat",
+      "aufwand": 8,
+      "paket": "Chatbot",
+      "content": "### Leistungsumfang\nSkalierung der Pipeline auf die vollen 5 Projekte: mehr Dokumente und Dokumenttypen, OCR-Verarbeitung, Qualitätssicherung und gegebenenfalls Pipeline-Erweiterung.\n\n### Fokus\nChatbot-relevante Dokumentmenge und projektbezogene Indexierbarkeit."
+    },
+    {
+      "url": "https://app.notion.com/p/397e185400fb808a8edbd88867f23842",
+      "title": "M1-ING-DQ - Ingestion-Datenqualitätscheck",
+      "aufwand": 24,
+      "paket": "Basis",
+      "content": "### Ziel\nAus den in M1 identifizierten Datenqualitätslücken ein umsetzbares Verbesserungskonzept ableiten, statt mit unzureichenden Daten weiterzubauen.\n\n### Leistungsumfang\n- Verdichtung der M1-Befunde zu einem Fehlerbild je Dokumenttyp und Projekt.\n- Priorisierung der Datenprobleme nach Auswirkung auf die Chatbot-Tauglichkeit.\n- Maßnahmenkatalog, z. B. Quellformat-Anpassung, OCR-Nachbearbeitung, Metadaten-Anreicherung oder Nachdigitalisierung.\n- Grobe Aufwands- und Reihenfolgeempfehlung.\n\n### Ergebnis\nKonzeptpapier zur Verbesserung der Datenqualität inklusive priorisierter Maßnahmenliste und Empfehlung für nächste Schritte."
+    },
+    {
+      "url": "https://app.notion.com/p/397e185400fb8098bddccfa7fbca6b15",
+      "title": "M1-ING-E - Ingestions-KomplexeTabellen",
+      "aufwand": 16,
+      "paket": "Erweiterung",
+      "content": "### Ziel\nAus einem exakt referenzierten Dokument gezielt einzelne Positionen extrahieren und als strukturierte Liste ausgeben.\n\n### Leistungsumfang\n- Dokumentnummer-genaues Scoping.\n- Robuste Tabellen-/STL-Extraktion.\n- Filter auf einzelne Positionen und Verknüpfung verwandter Dokumente.\n- Ausgabe als strukturierte Liste/Tabelle mit Mengen.\n\n### Ergebnis\nAbfrage-/Extraktionsfunktion für gefilterte Positionslisten mit Mengen. Außerhalb des Kern-Bundles."
+    },
+    {
+      "url": "https://app.notion.com/p/396e185400fb8026ad6eeb50e8f3bd72",
+      "title": "M2-IND-C - Indexierung & Retrieval",
+      "aufwand": 36,
+      "paket": "Chatbot",
+      "content": "### Ziel\nProjektbezogene Indexierung und Retrieval für den P&E Chatbot.\n\n### Indexierung\n- Chunking-Strategie.\n- Normalisierung und Embeddings.\n- Datenbank und Indizierungsstrategie.\n- Metadaten-Management.\n\n### Retrieval\n- Hybrid-Suche.\n- Optionales Reranking.\n- Query Expansion über Domänen-Glossar.\n\n### Ergebnis\nPro Projekt befüllte Indizes sowie Retrieval-Service mit Filter- und Hybrid-Suche."
+    },
+    {
+      "url": "https://app.notion.com/p/396e185400fb803f9e88e1dde3a0f80d",
+      "title": "M3-ERG-B - Ergebnisgenerierung-Basis",
+      "aufwand": 32,
+      "paket": "Basis",
+      "content": "### Ziel\nAus bereitgestellten Inhalten korrekte und belegte Ergebnisse erzeugen.\n\n### Gemeinsame Komponenten\n- Orchestrierung der LLM-Aufrufe.\n- Nutzung des Domänen-Glossars als terminologische Leitplanke.\n- Generierung der Ergebnisse mit Quellenangaben.\n- Guardrailing bei fehlender Quelle.\n- Prompt-Engineering für technische Fragestellungen."
+    },
+    {
+      "url": "https://app.notion.com/p/396e185400fb809086e3e4f68496bcf3",
+      "title": "M3-ERG-C - Ergebnisgenerierung-Chatbot",
+      "aufwand": 56,
+      "paket": "Chatbot",
+      "content": "### Komponenten\n- Orchestrierung der Loop-RAG-Kette: Retrieval, Prompt, LLM.\n- Abgegrenzte Datenbasis je Projekt als Single-Project-Kontext.\n- Short-Term Memory.\n- User-Prompt-Optimierung.\n- Nutzung von Glossar, Guardrails und Prompt-Engineering.\n\n### Ergebnis\nChatbot-Backend/API, das Fragen innerhalb eines Projekts beantwortet und Quellen referenziert."
+    },
+    {
+      "url": "https://app.notion.com/p/396e185400fb8050bd10d20a46c0c15e",
+      "title": "M3-ERG-R - Ergebnisgenerierung-Recommender",
+      "aufwand": 24,
+      "paket": "Recommender",
+      "content": "### Leistungsumfang\n- Direkte Übergabe der bekannten Dokumente je Material an das LLM.\n- Dynamischer klassengetriebener Prompt.\n- Strukturierter validierbarer JSON-Output mit ECLASS, Merkmalen, Werten, Confidence und Quellen.\n- Human-in-the-Loop-Markierung für unsichere Werte.\n\n### Ergebnis\nRecommender-Service/API, der je Material einen strukturierten quellenbelegten Merkmals-Datensatz liefert."
+    },
+    {
+      "url": "https://app.notion.com/p/397e185400fb80cf99d3f9a8ce09053b",
+      "title": "M3-ERG-E - Ergebnisgenerierung-Codebasiert",
+      "aufwand": 24,
+      "paket": "Erweiterung",
+      "content": "### Ziel\nÜber extrahierte Tabellendaten rechnen, Konsistenz prüfen und Ergebnisse als Datei exportieren.\n\n### Leistungsumfang\n- Gruppierung und Aggregation.\n- Klassifikation und Normalisierung.\n- Validierung und Abgleich inklusive Match-/Mismatch-Report.\n- Deterministische Berechnung mit Einheiten- und Locale-Handling.\n- Export als Excel-/Tabellendatei.\n\n### Ergebnis\nAggregations- und Validierungs-Pipeline mit Excel-Export und Abgleichsbericht."
+    },
+    {
+      "url": "https://app.notion.com/p/397e185400fb809ab246cc075d65650e",
+      "title": "M3-ERG-E - Ergebnisgenerierung-Projektübergreifend",
+      "aufwand": 32,
+      "paket": "Erweiterung",
+      "content": "### Ziel\nFragen beantworten, die sich über mehrere Projekte erstrecken.\n\n### Leistungsumfang\n- Projektübergreifendes Retrieval über mehrere projektbezogene Indizes.\n- Projekt-Kennzeichnung je Treffer und Antwortteil.\n- Aggregation und Vergleich über Projekte.\n- Guardrails gegen Projekt-Vermischung.\n- Berücksichtigung von Zugriffs- und Vertraulichkeitsgrenzen.\n\n### Ergebnis\nProjektübergreifender Abfrage-/Retrieval-Service mit projektscharfer Quellenzuordnung und Vergleichsfunktion."
+    },
+    {
+      "url": "https://app.notion.com/p/396e185400fb809691e6e8eaabffc00f",
+      "title": "M4-EVAL-B - Eval-Basis",
+      "aufwand": 16,
+      "paket": "Basis",
+      "content": "### Ziel\nObjektiv und wiederholbar messen, wie gut beide Komponenten auf Basis der vorhandenen Daten arbeiten.\n\n### Leistungsumfang\n- Erste Evaluierung gegen Testsets und Gold-Daten.\n- Minimal automatisierte Eval-Pipeline.\n- Tracking in MLflow inklusive Vergleichs-Dashboards.\n- Durchgängige Nachvollziehbarkeit von DocumentId über ChunkId bis Result-Trace.\n- Iterative Optimierung von Chunking, Retrieval, Prompts und Extraktionslogik.\n\n### Ergebnis\nKuratierte Eval-Datasets und MLflow-Setup mit Metriken, Läufen, Vergleichen und Lineage."
+    },
+    {
+      "url": "https://app.notion.com/p/396e185400fb80cb8d0adea789bafa84",
+      "title": "M5-UI-C - UI-Chatbot",
+      "aufwand": 8,
+      "paket": "Chatbot",
+      "content": "### Leistungsumfang\n- Schlanke Weboberfläche mit Projektauswahl.\n- Frage-/Antwort-Dialog mit Quellenanzeige.\n- PoC-tauglich, ohne aufwändiges Design.\n- Fokus auf Testbarkeit, Nachvollziehbarkeit und fachliches Feedback.\n\n### Ergebnis\nNutzbare PoC-Oberfläche für Tests, Feedback und fachliche Evaluation."
+    },
+    {
+      "url": "https://app.notion.com/p/397e185400fb80e6b8fef2d208c57d18",
+      "title": "M5-UI-E - UI-Referenzen",
+      "aufwand": 20,
+      "paket": "Erweiterung",
+      "content": "### Inhalt\nErweiterungsmodul für Referenz- und Zusatzfunktionen in der PoC-Oberfläche.\n\n### Hinweis\nDie Notion-Seite enthält aktuell keine ausgearbeitete Detailbeschreibung."
+    },
+    {
+      "url": "https://app.notion.com/p/396e185400fb8034ac37f330d081f014",
+      "title": "M5-UI-R - UI-Recommender",
+      "aufwand": 8,
+      "paket": "Recommender",
+      "content": "### Leistungsumfang\n- Einfache Testoberfläche zur Bereitstellung der PDFs.\n- Anzeige von ECLASS-Zuordnung, Characteristics, Werten und Quellen.\n- Feedback-Funktion für Fachanwender.\n- PoC-Oberfläche ausschließlich für Evaluation, nicht als produktives UI.\n\n### Ergebnis\nNutzbare PoC-Oberfläche für Tests, Feedback und fachliche Evaluation."
+    },
+    {
+      "url": "https://app.notion.com/p/396e185400fb80ae94a4d94557e4bd7a",
+      "title": "M6-INFRA-B - Infrastruktur-Basis",
+      "aufwand": 12,
+      "paket": "Basis",
+      "content": "### Ziel\nBeide PoC-Komponenten lauffähig in der Azure-Umgebung von Primetals bereitstellen.\n\n### Leistungsumfang\n- Gemeinsame Komponenten wie Dokumentenspeicher, Metadaten-/Chunk-Speicher, Evaluierungssetup und Konfiguration.\n- Nutzung freigegebener Azure-Services für Runtime, Storage, Secrets und Monitoring.\n- PoC-Grade-Setup ohne Security-Hardening, Hochverfügbarkeit, Betriebsmodell oder SLA.\n\n### Ergebnis\nLauffähiger PoC mit getrennt testbarem P&E Chatbot und MM Characteristics Recommender."
+    },
+    {
+      "url": "https://app.notion.com/p/397e185400fb80e9853fc6a65094bfcd",
+      "title": "M6-INFRA-MCP - Infrastruktur-MCP",
+      "aufwand": 16,
+      "paket": "Basis",
+      "content": "### Inhalt\nBasis-Infrastrukturmodul für MCP-nahe Erweiterungen.\n\n### Hinweis\nDie Notion-Seite enthält aktuell keine ausgearbeitete Detailbeschreibung."
+    },
+    {
+      "url": "https://app.notion.com/p/396e185400fb80d3ba34c1969109e525",
+      "title": "M6-INFRA-C - Infrastruktur-Chatbot",
+      "aufwand": 12,
+      "paket": "Chatbot",
+      "content": "### Leistungsumfang\n- Bereitstellung des Chatbot-Backends inklusive Retrieval-Service, projektbezogener Indexierung und Chat-API in Azure.\n- Anbindung an Dokumenten- und Vektorindizes aus M1/M2.\n- Bereitstellung der PoC-UI für fachliche Tests des Chatbots."
+    },
+    {
+      "url": "https://app.notion.com/p/396e185400fb8095a1e9d389f1660771",
+      "title": "M7-ABS-B - Abschluss",
+      "aufwand": 16,
+      "paket": "Basis",
+      "content": "### Ziel\nAus den Ergebnissen eine klare Empfehlung ableiten.\n\n### Leistungsumfang\n- Verdichtung der Eval-Ergebnisse zu einem Datenqualitäts-Urteil je Dokumenttyp und Projekt.\n- Analyse typischer Fehlerbilder.\n- Go/No-Go-Empfehlung.\n- Skizze und Aufwandsindikation für ein Folgeprojekt.\n- Abschlussworkshop.\n\n### Ergebnis\nAbschlussbericht und Präsentation mit konkreter Empfehlung."
+    }
+  ]
+}

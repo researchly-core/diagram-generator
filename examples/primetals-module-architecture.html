@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1500, initial-scale=1">
+    <title>Primetals Modularchitektur aus Notion JSON</title>
+    <link rel="stylesheet" href="../src/diagram-css/base.css">
+    <link rel="stylesheet" href="../src/diagram-css/utilities.css">
+    <link rel="stylesheet" href="../src/diagram-css/themes/researchly.css">
+    <style>
+      .module-page {
+        width: 1500px;
+        min-height: 900px;
+        margin: 0 auto;
+        padding: 18px;
+      }
+
+      .module-board {
+        display: grid;
+        grid-template-columns: 270px 300px 300px 280px 280px;
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .module-zone {
+        position: relative;
+        min-height: 620px;
+        padding: 48px 14px 14px;
+        border: 1px solid var(--diagram-border-strong);
+        border-radius: var(--diagram-radius-md);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: var(--diagram-shadow);
+      }
+
+      .module-zone-title {
+        position: absolute;
+        top: 11px;
+        right: 12px;
+        left: 48px;
+        margin: 0;
+        color: var(--diagram-primary-dark);
+        font-size: 16px;
+        line-height: 25px;
+        font-weight: 780;
+      }
+
+      .module-card {
+        display: grid;
+        gap: 6px;
+        padding: 10px;
+        border: 1px solid var(--diagram-border);
+        border-left: 5px solid var(--diagram-primary);
+        border-radius: var(--diagram-radius-sm);
+        background: linear-gradient(180deg, #ffffff, var(--diagram-surface-soft));
+        text-decoration: none;
+      }
+
+      .module-card.basis {
+        border-left-color: var(--diagram-primary);
+      }
+
+      .module-card.chatbot {
+        border-left-color: #20a46b;
+      }
+
+      .module-card.recommender {
+        border-left-color: #f05a70;
+      }
+
+      .module-card.erweiterung {
+        border-left-color: var(--diagram-accent);
+        border-style: dashed;
+      }
+
+      .module-code {
+        color: var(--diagram-primary-dark);
+        font-size: 12px;
+        font-weight: 820;
+      }
+
+      .module-name {
+        color: var(--diagram-text);
+        font-size: 12px;
+        line-height: 1.15;
+        font-weight: 780;
+      }
+
+      .module-meta {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        color: var(--diagram-muted);
+        font-size: 9px;
+        font-weight: 700;
+      }
+
+      .pill {
+        padding: 3px 7px;
+        border-radius: 999px;
+        background: var(--diagram-primary-soft);
+        color: var(--diagram-primary-dark);
+      }
+
+      .module-flow {
+        margin: 14px 0;
+        padding: 10px;
+        border: 1px dashed var(--diagram-primary);
+        border-radius: var(--diagram-radius-md);
+        background: var(--diagram-surface-soft);
+        color: var(--diagram-primary-dark);
+        text-align: center;
+        font-size: 12px;
+        font-weight: 780;
+      }
+
+      .module-summary {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 8px;
+        margin: 0 0 12px;
+      }
+
+      .summary-tile {
+        padding: 8px;
+        border: 1px solid var(--diagram-border);
+        border-radius: var(--diagram-radius-sm);
+        background: #ffffff;
+        text-align: center;
+      }
+
+      .summary-number {
+        color: var(--diagram-primary);
+        font-size: 18px;
+        font-weight: 820;
+      }
+
+      .summary-label {
+        color: var(--diagram-muted);
+        font-size: 9px;
+        font-weight: 720;
+      }
+
+      .source-line {
+        margin: 12px 0 0;
+        color: var(--diagram-muted);
+        text-align: right;
+        font-size: 10px;
+        font-weight: 560;
+      }
+
+      .module-order {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 18px;
+        align-items: center;
+      }
+
+      .order-step {
+        position: relative;
+        min-height: 48px;
+        padding: 8px 10px;
+        border: 1px solid var(--diagram-border);
+        border-radius: var(--diagram-radius-sm);
+        background: #ffffff;
+      }
+
+      .order-step:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -17px;
+        width: 0;
+        height: 0;
+        border-top: 9px solid transparent;
+        border-bottom: 9px solid transparent;
+        border-left: 12px solid var(--diagram-primary);
+        transform: translateY(-50%);
+      }
+
+      .order-code {
+        color: var(--diagram-primary);
+        font-size: 18px;
+        font-weight: 820;
+      }
+
+      .order-label {
+        color: var(--diagram-text);
+        font-size: 10px;
+        line-height: 1.12;
+        font-weight: 760;
+      }
+    </style>
+  </head>
+  <body class="brand-researchly">
+    <main class="module-page">
+      <h1 class="diagram-title">Primetals PoC Modularchitektur</h1>
+      <p class="diagram-subtitle">Vom Scoping über Datenqualität und Produktpfade bis zur Go/No-Go-Entscheidung</p>
+
+      <section class="module-summary" aria-label="Modulzusammenfassung">
+        <div class="summary-tile"><div class="summary-number" id="total-modules">0</div><div class="summary-label">Module</div></div>
+        <div class="summary-tile"><div class="summary-number" id="total-hours">0 h</div><div class="summary-label">Aufwand</div></div>
+        <div class="summary-tile"><div class="summary-number" id="basis-hours">0 h</div><div class="summary-label">Basis</div></div>
+        <div class="summary-tile"><div class="summary-number" id="product-hours">0 h</div><div class="summary-label">Produktpfade</div></div>
+        <div class="summary-tile"><div class="summary-number" id="extension-hours">0 h</div><div class="summary-label">Erweiterung</div></div>
+      </section>
+
+      <section class="module-board" aria-label="Primetals Modularchitektur aus Modulübersicht">
+        <section class="module-zone" data-component="diagram-zone">
+          <div class="badge">1</div>
+          <h2 class="module-zone-title">Projektsteuerung</h2>
+          <div class="stack u-grid u-gap-10" data-module-target="Projektsteuerung"></div>
+          <div class="module-flow">Gate: Datenqualität und Scope entscheiden über Kernpfad oder Alternativpfad.</div>
+          <div class="stack u-grid u-gap-10" data-module-target="Abschluss"></div>
+        </section>
+
+        <section class="module-zone" data-component="diagram-zone">
+          <div class="badge">2</div>
+          <h2 class="module-zone-title">Shared Basis</h2>
+          <div class="stack u-grid u-gap-10" data-module-target="Basis"></div>
+        </section>
+
+        <section class="module-zone" data-component="diagram-zone">
+          <div class="badge">3</div>
+          <h2 class="module-zone-title">P&amp;E Chatbot</h2>
+          <div class="stack u-grid u-gap-10" data-module-target="Chatbot"></div>
+        </section>
+
+        <section class="module-zone" data-component="diagram-zone">
+          <div class="badge">4</div>
+          <h2 class="module-zone-title">MM Recommender</h2>
+          <div class="stack u-grid u-gap-10" data-module-target="Recommender"></div>
+        </section>
+
+        <section class="module-zone" data-component="diagram-zone">
+          <div class="badge">5</div>
+          <h2 class="module-zone-title">Erweiterungen</h2>
+          <div class="stack u-grid u-gap-10" data-module-target="Erweiterung"></div>
+        </section>
+      </section>
+
+      <section class="evaluation">
+        <h2 class="evaluation-title">Modulabfolge</h2>
+        <div class="module-order" aria-label="Modulabfolge">
+          <div class="order-step"><div class="order-code">M0</div><div class="order-label">Scoping &amp; Erfolgskriterien</div></div>
+          <div class="order-step"><div class="order-code">M1</div><div class="order-label">Ingestion &amp; Datenqualität</div></div>
+          <div class="order-step"><div class="order-code">M2</div><div class="order-label">Indexierung &amp; Retrieval</div></div>
+          <div class="order-step"><div class="order-code">M3</div><div class="order-label">Ergebnisgenerierung</div></div>
+          <div class="order-step"><div class="order-code">M4</div><div class="order-label">Evaluation</div></div>
+          <div class="order-step"><div class="order-code">M5/M6</div><div class="order-label">UI, API &amp; Infrastruktur</div></div>
+          <div class="order-step"><div class="order-code">M7</div><div class="order-label">Abschluss &amp; Empfehlung</div></div>
+        </div>
+      </section>
+
+      <p class="source-line" id="source-line">Source: Notion Modulübersicht.</p>
+    </main>
+
+    <script>
+      const laneFor = (module) => {
+        if (module.title.startsWith("M0-")) return "Projektsteuerung";
+        if (module.title.startsWith("M1-ING-DQ")) return "Projektsteuerung";
+        if (module.title.startsWith("M7-")) return "Abschluss";
+        return module.paket;
+      };
+
+      const classFor = (paket) => {
+        if (paket === "Chatbot") return "chatbot";
+        if (paket === "Recommender") return "recommender";
+        if (paket === "Erweiterung") return "erweiterung";
+        return "basis";
+      };
+
+      const splitTitle = (title) => {
+        const [code, ...nameParts] = title.split(" - ");
+        return { code, name: nameParts.join(" - ") || code };
+      };
+
+      const renderCard = (module) => {
+        const { code, name } = splitTitle(module.title);
+        const card = document.createElement("a");
+        card.className = `module-card ${classFor(module.paket)}`;
+        card.href = module.url;
+        card.target = "_blank";
+        card.rel = "noreferrer";
+        card.innerHTML = `
+          <div class="module-code">${code}</div>
+          <div class="module-name">${name}</div>
+          <div class="module-meta">
+            <span class="pill">${module.aufwand} h</span>
+            <span class="pill">${module.paket}</span>
+          </div>
+        `;
+        return card;
+      };
+
+      fetch("../data/primetals-modules.json")
+        .then((response) => response.json())
+        .then((data) => {
+          const modules = data.modules.slice().sort((a, b) => a.title.localeCompare(b.title, "de"));
+
+          for (const module of modules) {
+            const target = document.querySelector(`[data-module-target="${laneFor(module)}"]`);
+            if (target) target.appendChild(renderCard(module));
+          }
+
+          const sum = (items) => items.reduce((total, module) => total + module.aufwand, 0);
+          const basis = modules.filter((module) => module.paket === "Basis");
+          const extension = modules.filter((module) => module.paket === "Erweiterung");
+          const product = modules.filter((module) => module.paket !== "Basis" && module.paket !== "Erweiterung");
+
+          document.getElementById("total-modules").textContent = modules.length;
+          document.getElementById("total-hours").textContent = `${sum(modules)} h`;
+          document.getElementById("basis-hours").textContent = `${sum(basis)} h`;
+          document.getElementById("product-hours").textContent = `${sum(product)} h`;
+          document.getElementById("extension-hours").textContent = `${sum(extension)} h`;
+          document.getElementById("source-line").textContent =
+            `Source: ${data.source.name}, ${data.source.filter}, synced ${data.source.syncedAt}.`;
+        });
+    </script>
+  </body>
+</html>

@@ -113,6 +113,23 @@ Use `docs/brand-profile-template.md` when adding a new customer CI.
 Current examples:
 
 - `examples/researchly-azure-ai-architecture.html` - wide Azure AI architecture example inspired by the provided reference diagram and Researchly style
+- `examples/primetals-module-architecture.html` - module architecture rendered from `data/primetals-modules.json`
+
+## Data
+
+Data files live in `data/`.
+
+Current data:
+
+- `data/primetals-modules.json` - completed (`Erledigt`) Notion modules synced from the Primetals `Modulübersicht` database
+
+## Architecture Sources
+
+Architecture source notes live in `docs/`.
+
+Current architecture docs:
+
+- `docs/primetals-architecture.md` - Markdown base derived from the Notion `Architektur` page
 
 ## Components
 
