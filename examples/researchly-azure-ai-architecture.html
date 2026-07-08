@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=1500, initial-scale=1">
     <title>Researchly Style Azure AI Architecture Example</title>
     <link rel="stylesheet" href="../src/diagram-css/base.css">
+    <link rel="stylesheet" href="../src/diagram-css/utilities.css">
     <link rel="stylesheet" href="../src/diagram-css/themes/researchly.css">
   </head>
   <body class="brand-researchly">
@@ -21,7 +22,7 @@
         <section class="zone" data-component="diagram-zone">
           <div class="badge">1</div>
           <h2 class="zone-title">Datenquellen</h2>
-          <div class="stack">
+          <div class="stack u-grid u-gap-10">
             <div class="item" data-component="list-item"><span class="metric-icon">▣</span><span>Webseiten & Marktquellen</span></div>
             <div class="item" data-component="list-item"><span class="metric-icon">▤</span><span>PDFs, Reports & Decks</span></div>
             <div class="item" data-component="list-item"><span class="metric-icon">▥</span><span>CRM- und Interviewdaten</span></div>
@@ -38,7 +39,7 @@
 
           <section class="subpanel" data-component="subpanel">
             <h3 class="subpanel-title">A. Speicher & Steuerung</h3>
-            <div class="stack-tight">
+            <div class="stack-tight u-grid u-gap-7">
               <div class="service" data-component="service-row">
                 <img src="../resources/icons/azure/storage/10086-icon-service-Storage-Accounts.svg" alt="">
                 <span>Azure Blob Storage / Data Lake</span>
@@ -97,10 +98,10 @@
               </div>
             </section>
 
-            <div class="foundation-bottom">
+            <div class="foundation-bottom u-grid u-cols-2 u-gap-12">
               <section class="subpanel" data-component="subpanel">
                 <h3 class="subpanel-title">C. Applikationslogik</h3>
-                <div class="stack-tight">
+                <div class="stack-tight u-grid u-gap-7">
                   <div class="service" data-component="service-row">
                     <span class="metric-icon">⚡</span>
                     <span>Azure Functions</span>
@@ -126,7 +127,7 @@
 
               <section class="subpanel" data-component="subpanel">
                 <h3 class="subpanel-title">D. Model Layer</h3>
-                <div class="stack-tight">
+                <div class="stack-tight u-grid u-gap-7">
                   <div class="service" data-component="service-row">
                     <img src="../resources/icons/azure/ai + machine learning/03513-icon-service-AI-Studio.svg" alt="">
                     <span>Azure AI Foundry</span>
@@ -156,7 +157,7 @@
             <img src="../resources/icons/azure/ai + machine learning/10044-icon-service-Cognitive-Search.svg" alt="">
             <span>Vektorindex & Hybrid Retrieval</span>
           </div>
-          <div class="stack">
+          <div class="stack u-grid u-gap-10">
             <div class="item" data-component="list-item"><span class="metric-icon">□</span><span>Projektbezogene Indizes</span></div>
             <div class="item" data-component="list-item"><span class="metric-icon">⌬</span><span>Vektorsuche</span></div>
             <div class="item" data-component="list-item"><span class="metric-icon">Aa</span><span>Keyword / BM25</span></div>
@@ -179,7 +180,7 @@
               <div class="mini"><div class="mini-icon">{}</div><span>Strukturierter Output</span></div>
               <div class="mini"><div class="mini-icon">✓</div><span>Zitierfähig</span></div>
             </div>
-            <div class="stage-content">
+            <div class="stage-content u-grid u-cols-stage-content u-gap-10 u-items-stretch u-mt-10">
               <ul class="bullets">
                 <li>Market Maps, Wettbewerber, Signale</li>
                 <li>Quellen, Confidence und Annahmen</li>
@@ -225,7 +226,7 @@
         <h2 class="evaluation-title">Evaluation & Data Quality Assessment</h2>
         <div class="metric-grid">
           <div class="metric logo" data-component="metric">researchly</div>
-          <div class="metric" data-component="metric"><span class="metric-icon">OCR</span><span>OCR-Qualität</span></div>
+          <div class="metric" data-component="metric"><span class="metric-icon">▣</span><span>OCR-Qualität</span></div>
           <div class="metric" data-component="metric"><span class="metric-icon">▦</span><span>Tabellen-Erkennung</span></div>
           <div class="metric" data-component="metric"><span class="metric-icon">◆</span><span>Metadaten-Vollständigkeit</span></div>
           <div class="metric" data-component="metric"><span class="metric-icon">◎</span><span>Retrieval Recall</span></div>

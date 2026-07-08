@@ -4,6 +4,8 @@ Reusable HTML snippets for architecture diagrams.
 
 These are framework-free components: copy the snippet into a diagram and change the text, icons, and classes. Styling comes from `src/diagram-css/base.css` plus the active theme file.
 
+For small layout adjustments, use utilities from `src/diagram-css/utilities.css` such as `u-grid`, `u-cols-2`, `u-gap-12`, `u-items-center`, and `u-text-center`.
+
 ## Components
 
 - `diagram-zone.html` - numbered top-level diagram section

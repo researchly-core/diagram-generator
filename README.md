@@ -28,7 +28,7 @@ The goal is to let AI generate diagrams for many projects while this repository 
 │       └── azure/             # Azure icon pack
 ├── src/                       # Reusable diagram system code
 │   ├── components/            # HTML snippets or web components for nodes, groups, legends
-│   ├── diagram-css/           # Shared visual language: tokens, themes, layout utilities
+│   ├── diagram-css/           # Shared visual language: tokens, utilities, themes
 │   └── layouts/               # Reusable layout patterns
 └── templates/                 # Copyable starter diagrams
 ```
@@ -129,6 +129,16 @@ Current components:
 - `metric.html` - evaluation metric tile
 
 The examples remain plain HTML. Components are copyable snippets styled by `src/diagram-css/base.css` and the active theme. Example markup may include `data-component` attributes so humans, AI agents, and future scripts can recognize reusable blocks.
+
+## Utility CSS
+
+The project uses a small in-house utility layer instead of a framework like Tailwind.
+
+- `src/diagram-css/base.css` defines tokens and component styles.
+- `src/diagram-css/utilities.css` defines reusable layout utilities such as `u-grid`, `u-cols-2`, `u-gap-12`, `u-items-center`, and `u-panel`.
+- Theme files in `src/diagram-css/themes/` override brand variables.
+
+Use component classes for meaning and utility classes for simple layout adjustments.
 
 ## Preview In VS Code
 
