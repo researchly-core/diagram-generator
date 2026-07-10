@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../../../src/diagram-css/themes/researchly.css">
     <style>
       .module-page {
+        --module-column-gap: 18px;
+
         width: 1500px;
         min-height: 900px;
         margin: 0 auto;
@@ -17,13 +19,14 @@
 
       .module-board {
         display: grid;
-        grid-template-columns: 270px 300px 300px 280px 280px;
-        gap: 18px;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: var(--module-column-gap);
         align-items: stretch;
       }
 
       .module-zone {
         position: relative;
+        min-width: 0;
         min-height: 620px;
         padding: 48px 14px 14px;
         border: 1px solid var(--diagram-border-strong);
@@ -47,6 +50,7 @@
       .module-card {
         display: grid;
         gap: 6px;
+        min-width: 0;
         padding: 10px;
         border: 1px solid var(--diagram-border);
         border-left: 5px solid var(--diagram-primary);
@@ -116,11 +120,12 @@
       .module-summary {
         display: grid;
         grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 8px;
+        gap: var(--module-column-gap);
         margin: 0 0 12px;
       }
 
       .summary-tile {
+        min-width: 0;
         padding: 8px;
         border: 1px solid var(--diagram-border);
         border-radius: var(--diagram-radius-sm);
